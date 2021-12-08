@@ -1,0 +1,20 @@
+Sql Intermedio
+2-
+Escriba una consulta para saber, de la tabla PROFESOR, el salario mínimo de los profesores nacidos en la década del 80
+SELECT MIN(salario) as salario_minimo FROM profesores WHERE fecha_nacimiento BETWEEN '01-01-1980' and '31-12-1989'
+4-
+*Cantidad de pasajeros por pais 
+SELECT pai.nombre,count(pas.idpasajero) 
+FROM pais pai 
+INNER JOIN pasajero pas ON pas.idpais=pai.idpais
+GROUP BY (pai.idpais)
+*Suma de todos los pagos realizados
+SELECT ROUND(SUM(monto),2) as total FROM pago
+*Suma de todos los pagos que realizó un pasajero. El monto debe aparecer con dos decimales.
+SELECT ROUND(SUM(pag.monto),2) as total FROM pago pag 
+INNER JOIN pasajero pas ON pas.idpasajero=pag.idpasajero
+WHERE pas.idpasajero=1
+*Promedio de los pagos que realizó un pasajero.
+SELECT AVG(pag.monto) as promedio FROM pago pag 
+INNER JOIN pasajero pas ON pas.idpasajero=pag.idpasajero
+WHERE pas.idpasajero=1
